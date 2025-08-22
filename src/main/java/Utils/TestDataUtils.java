@@ -13,7 +13,7 @@ public class TestDataUtils {
     public static String generateRandomEmail() {
         // generate 6 random letters
         StringBuilder letters = new StringBuilder();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             letters.append(LETTERS.charAt(random.nextInt(LETTERS.length())));
         }
 
