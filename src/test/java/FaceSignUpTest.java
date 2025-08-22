@@ -38,6 +38,7 @@ public class FaceSignUpTest extends ConvertMp4ToY4m {
         options.addArguments("--use-fake-device-for-media-stream");
         options.addArguments("--use-file-for-fake-video-capture=" + y4mPath);
         options.addArguments("--user-data-dir=" + tempProfileDir.toAbsolutePath());
+        options.addArguments("--window-size=1920,1080");
 
         ChromeDriver driver = new ChromeDriver(options);
 
