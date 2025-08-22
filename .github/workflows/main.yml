@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to v4
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4  # Updated to v4
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
@@ -23,22 +23,22 @@ jobs:
       - name: Install Chrome & dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget unzip xvfb libxi6 libgconf-2-4 libnss3 libxss1 libappindicator1 ffmpeg
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  
+          sudo apt-get install -y wget unzip xvfb libxi6 libnss3 libxss1 ffmpeg fonts-liberation
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
       - name: Start Xvfb (virtual display for headless Chrome)
         run: |
           Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
           export DISPLAY=:99
-          sleep 3  # Give Xvfb time to start
+          sleep 3
 
       - name: Run Selenium tests
         run: mvn -B test --file pom.xml
 
       - name: Upload test reports
-        uses: actions/upload-artifact@v4  # ✅ Updated from v3 to v4
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: target/surefire-reports/
-          retention-days: 7  # Optional: set how long to keep artifacts
+          retention-days: 7
