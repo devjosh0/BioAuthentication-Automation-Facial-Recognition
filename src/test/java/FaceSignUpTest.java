@@ -14,26 +14,30 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 
 public class FaceSignUpTest extends ConvertMp4ToY4m {
 
     @Test
-    public void testFaceSignUpAndLogin() {
+    public void testFaceSignUpAndLogin() throws IOException {
 
         String mp4Path = System.getProperty("user.dir") + "/src/main/resources/face.mp4";
         String y4mPath = System.getProperty("user.dir") + "/src/main/resources/face.y4m";
 
         // Convert video before starting Chrome
         convertMp4ToY4m(mp4Path, y4mPath);
-
+        Path tempProfileDir = Files.createTempDirectory("chrome-profile");
 
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless=new"); // or "--headless" comment to run in GUI
-        //options.addArguments("--disable-gpu");//comment to run in GUI
+        options.addArguments("--headless=new"); // or "--headless" comment to run in GUI
+        options.addArguments("--disable-gpu");//comment to run in GUI
         options.addArguments("--use-fake-ui-for-media-stream");
         options.addArguments("--use-fake-device-for-media-stream");
         options.addArguments("--use-file-for-fake-video-capture=" + y4mPath);
+        options.addArguments("--user-data-dir=" + tempProfileDir.toAbsolutePath());
 
         ChromeDriver driver = new ChromeDriver(options);
 
