@@ -81,6 +81,7 @@ src/
    options.addArguments("--headless=new"); 
    options.addArguments("--disable-gpu");
    ```
+5. In your src/test/java/FaceSignUpTest file, run in GUI by pressing the play botton
 
 ## Continuous Integration
 
