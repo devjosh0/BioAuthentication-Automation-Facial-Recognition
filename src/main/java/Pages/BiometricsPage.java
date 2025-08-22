@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class BiometricsPage extends BasePage {
 
-    private final By setupBiometrics = By.id("setup-biometrics");
+    private final By biometricsBtn = By.id("setup-biometrics");
     private final By accountInfo = By.id("user-account-info");
 
     public BiometricsPage(WebDriver driver) {
@@ -13,7 +13,7 @@ public class BiometricsPage extends BasePage {
     }
 
     public void setupBiometrics() {
-        waitForVisible(setupBiometrics).click();
+        waitForVisible(biometricsBtn).click();
     }
 
     public void goToAccountInfo() {
