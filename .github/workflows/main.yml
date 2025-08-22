@@ -1,6 +1,5 @@
 name: Selenium Java Tests
 
-# Trigger the workflow on push or pull request to main branch
 on:
   push:
     branches:
@@ -15,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      # Optional: Chrome service for headless testing
       selenium:
         image: selenium/standalone-chrome:latest
         ports:
@@ -24,7 +22,7 @@ jobs:
     steps:
       # Step 1: Checkout the code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up JDK
       - name: Set up JDK 17
@@ -53,10 +51,10 @@ jobs:
           SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
         run: mvn test
 
-      # Step 6: Archive test reports (optional)
+      # Step 6: Archive test reports
       - name: Archive Test Reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: target/surefire-reports/
