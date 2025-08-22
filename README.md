@@ -43,7 +43,7 @@ src/
 - Chrome browser
 - FFmpeg (for video conversion)
 
-## How to Run
+## How to Run Headless
 
 1. Install dependencies:
    ```sh
@@ -53,6 +53,33 @@ src/
 2. Run tests:
    ```sh
    mvn test
+   ```
+
+## How to Run Headed or GUI
+
+1. In your System Device Manager.
+   Disable all physical webcams.
+   Leave only OBS VirtualCam enabled.
+
+2. Set the bin folder path of the FFmpeg to the Environment Variable
+   ```sh 
+   computerLocalPath+\ffmpeg-7.0.2-essentials_build\ffmpeg-7.0.2-essentials_build\bin
+   ```
+
+3. Download OBS Studio
+   ```sh
+   https://obsproject.com/download
+   Open OBS Studio.
+   In the Sources panel, click + → choose Media Source(select video in directory src/main/resources/face.mp4).
+   Enable Loop (so it plays continuously).
+   Resize/fit it into the screen so it looks like a proper webcam feed.
+   In OBS, click Start Virtual Camera (bottom-right corner).
+   ```
+
+4. Comments lines below in your src/test/java/FaceSignUpTest.java file
+   ```sh
+   options.addArguments("--headless=new"); 
+   options.addArguments("--disable-gpu");
    ```
 
 ## Continuous Integration
