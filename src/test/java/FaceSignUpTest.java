@@ -29,6 +29,8 @@ public class FaceSignUpTest extends ConvertMp4ToY4m {
 
 
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // or "--headless"
+        options.addArguments("--disable-gpu");
         options.addArguments("--use-fake-ui-for-media-stream");
         options.addArguments("--use-fake-device-for-media-stream");
         options.addArguments("--use-file-for-fake-video-capture=" + y4mPath);
