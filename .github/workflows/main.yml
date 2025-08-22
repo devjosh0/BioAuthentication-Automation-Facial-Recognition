@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to latest version
+        uses: actions/checkout@v4  # Updated to v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4  # Updated to v4
         with:
           distribution: temurin
           java-version: 17
@@ -24,33 +24,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y wget unzip xvfb libxi6 libgconf-2-4 libnss3 libxss1 libappindicator1 ffmpeg
-          wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y /tmp/chrome.deb
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
-      - name: Start Xvfb (virtual display)
+      - name: Start Xvfb (virtual display for headless Chrome)
         run: |
-          Xvfb :99 -screen 0 1920x1080x24 > /tmp/xvfb.log 2>&1 &
+          Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
           export DISPLAY=:99
-          echo "DISPLAY=:99" >> $GITHUB_ENV  # Persist DISPLAY for subsequent steps
-
-      - name: Verify Chrome installation
-        run: google-chrome --version
+          sleep 3  # Give Xvfb time to start
 
       - name: Run Selenium tests
         run: mvn -B test --file pom.xml
 
       - name: Upload test reports
-        if: always()  # Ensure this runs even if tests fail
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # ✅ Updated from v3 to v4
         with:
           name: test-reports
           path: target/surefire-reports/
-          retention-days: 7
-
-      - name: Upload failed screenshots (if any)
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: screenshots-on-failure
-          path: target/screenshots/  # Assuming your tests save screenshots here
-          retention-days: 7
+          retention-days: 7  # Optional: set how long to keep artifacts
