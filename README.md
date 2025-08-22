@@ -83,6 +83,12 @@ src/
    ```
 5. In your src/test/java/FaceSignUpTest file, run in GUI by pressing the play botton
 
+
+## Attached link to the Ene-To-End GUI Automation
+```sh
+https://amalitech-my.sharepoint.com/:v:/r/personal/hussein_amadu_amalitech_com/Documents/FaceAuth.mp4?csf=1&web=1&e=iqUi9f&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+```
+
 ## Continuous Integration
 
 - GitHub Actions workflow in [`.github/workflows/main.yml`](.github/workflows/main.yml) runs tests on push and pull requests.
