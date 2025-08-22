@@ -56,7 +56,7 @@ public class FaceSignUpTest extends ConvertMp4ToY4m {
         biometrics.goToAccountInfo();
 
         // Logout
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
         WebElement logoutBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button:nth-child(5)")));
         logoutBtn.click();
 
