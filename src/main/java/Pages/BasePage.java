@@ -15,7 +15,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(120))
+                .withTimeout(Duration.ofSeconds(180))
                 .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(Exception.class);
     }
