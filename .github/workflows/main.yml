@@ -1,4 +1,4 @@
-name: Selenium Face Login Tests
+name: Selenium Face Recognition Login Tests
 
 on:
   push:
