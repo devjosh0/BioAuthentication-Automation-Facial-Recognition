@@ -54,18 +54,19 @@ jobs:
           DISPLAY: :99
           SELENIUM_REMOTE_URL: http://localhost:4444/wd/hub
         run: mvn test
-        
-      # Step 7: Generate Allure Report
+
+      # Step 7: Install Allure CLI (stable v2)
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline@2.24.1
+
+      # Step 8: Generate Allure Report
       - name: Generate Allure Report
-        run: |
-          npx allure generate target/allure-results -o allure-report || echo "Skipping if no results"
+        run: allure generate target/allure-results -o allure-report || echo "Skipping if no results"
 
-
-    # Step 8: Archive test reports
+      # Step 9: Archive Allure Report
       - name: Archive Allure Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report
-
