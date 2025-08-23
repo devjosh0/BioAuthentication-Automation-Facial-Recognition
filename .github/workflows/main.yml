@@ -56,9 +56,10 @@ jobs:
         run: mvn test
         
       # Step 7: Generate Allure Report
-      - name: 🧾 Generate Allure Report
+      - name: Generate Allure Report
         run: |
-          npx allure generate allure-results --clean -o allure-report || echo "Skipping if no results"
+          npx allure generate target/allure-results -o allure-report || echo "Skipping if no results"
+
 
     # Step 8: Archive test reports
       - name: Archive Allure Report
