@@ -37,5 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 src/main/resources/face.y4m
-allure-results
-allure-report
+allure-results/
+allure-report/
