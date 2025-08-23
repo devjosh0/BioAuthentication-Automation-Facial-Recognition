@@ -32,8 +32,8 @@ public class FaceSignUpTest extends ConvertMp4ToY4m {
         Path tempProfileDir = Files.createTempDirectory("chrome-profile");
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new"); // or "--headless" comment to run in GUI
-        options.addArguments("--disable-gpu");//comment to run in GUI
+        //options.addArguments("--headless=new"); // or "--headless" comment to run in GUI
+        //options.addArguments("--disable-gpu");//comment to run in GUI
         options.addArguments("--use-fake-ui-for-media-stream");
         options.addArguments("--use-fake-device-for-media-stream");
         options.addArguments("--use-file-for-fake-video-capture=" + y4mPath);
