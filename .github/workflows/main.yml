@@ -61,7 +61,7 @@ jobs:
 
       # Step 8: Generate Allure Report
       - name: Generate Allure Report
-        run: allure generate target/allure-results -o allure-report || echo "Skipping if no results"
+        run: allure generate allure-results -o allure-report || echo "Skipping if no results"
 
       # Step 9: Archive Allure Report
       - name: Archive Allure Report
